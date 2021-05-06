@@ -22,6 +22,11 @@ class SecondFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private fun nullify(view: View) {
+        val showCountTextView = view.findViewById<TextView>(R.id.textview_random)
+        var count = 0
+        showCountTextView.text = count.toString()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,6 +56,10 @@ class SecondFragment : Fragment() {
             randomNumber = random.nextInt(count + 1)
         }
         view.findViewById<TextView>(R.id.textview_random).text = randomNumber.toString()
+
+        view.findViewById<Button>(R.id.button_nullify).setOnClickListener {
+            nullify(view)
+        }
     }
 
     override fun onDestroyView() {
