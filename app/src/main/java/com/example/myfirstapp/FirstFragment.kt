@@ -29,6 +29,11 @@ class FirstFragment : Fragment() {
         count++
         showCountTextView.text = count.toString()
     }
+    private fun nullify(view: View) {
+        val showCountTextView = view.findViewById<TextView>(R.id.textview_first)
+        var count = 0
+        showCountTextView.text = count.toString()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,6 +69,10 @@ class FirstFragment : Fragment() {
         view.findViewById<Button>(R.id.count_button).setOnClickListener {
             countMe(view)
         }
+        view.findViewById<Button>(R.id.button_nullify).setOnClickListener {
+            nullify(view)
+        }
+
     }
 
     override fun onDestroyView() {
